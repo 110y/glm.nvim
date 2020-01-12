@@ -38,6 +38,8 @@ func runGLMWorker(args []string) (string, error) {
 			// return "", errors.New("invalid duration format")
 		}
 
+		<-time.After(5 * time.Second)
+
 		for {
 			modifle, err := os.OpenFile("./go.mod", os.O_RDONLY, 0755)
 			if err != nil {

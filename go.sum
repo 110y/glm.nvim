@@ -1,4 +1,6 @@
-github.com/110y/glm v0.0.0-20191102113605-fb63d965cf53 h1:eis9sUY8f2+uDWwuqPjyXkCRXG4qD27tVtNsUJymQV4=
-github.com/110y/glm v0.0.0-20191102113605-fb63d965cf53/go.mod h1:tCxSRSgcdCnvx3VGgk0c/vaGJ5jfO463Ve9A3xUmyh8=
-github.com/neovim/go-client v1.0.0 h1:fborvig+qN5QP20XAARJZH4hqyMUHaZ70b7nFOb/RAA=
-github.com/neovim/go-client v1.0.0/go.mod h1:cHx8fl6EhCgSA/pyKeVtyl3o6UzgE31ADtc+bx3JpKg=
+github.com/110y/glm v0.0.0-20200110081151-a2d1b0848bc3 h1:GatiTbug/jmqgQXmlhXhA28OQuMtBWZXJn/kjGCeGZQ=
+github.com/110y/glm v0.0.0-20200110081151-a2d1b0848bc3/go.mod h1:GUNGEUKItXi0O7aRdiqs8eFoJGtPj6bEJXXFb8U7FGw=
+github.com/neovim/go-client v1.0.1 h1:HbR4QQLDLjktkNOp1VEHGkHI7fccRqiy23JdnSp9U8E=
+github.com/neovim/go-client v1.0.1/go.mod h1:l1OzxMpaDaUXpuZAgklQwRB2ha7LLlR+4Z6O7zoF3kI=
+golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e h1:vcxGaoTs7kV8m5Np9uUNQin4BrLOthgV7252N8V+FwY=
+golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=

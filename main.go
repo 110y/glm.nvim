@@ -68,9 +68,6 @@ func runGLMWorker(args []string) (string, error) {
 			if err := os.Setenv("MODFILE", copiedModfilePath); err != nil {
 				return
 			}
-			if err := os.Setenv("GO_EXECUTABLE", "go1.14beta1"); err != nil {
-				return
-			}
 
 			output, _ := glm.GetImportablePackages()
 

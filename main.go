@@ -1,11 +1,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"io"
 	"log"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/110y/glm/pkg/glm"
@@ -20,61 +19,31 @@ func main() {
 }
 
 func runGLMWorker(args []string) (string, error) {
-	// TODO: filename
+	l := len(args)
+	if l != 2 {
+		return "", errors.New("invalid number of arguments")
+	}
+
+	glmfile := args[0]
+
+	duration := args[1]
+	d, err := time.ParseDuration(duration)
+	if err != nil {
+		return "", errors.New("invalid duration format")
+	}
 
 	go func() {
-		l := len(args)
-		if l != 2 {
-			return
-			// return "", errors.New("invalid number of arguments")
-		}
-
-		glmfile := args[0]
-
-		duration := args[1]
-		d, err := time.ParseDuration(duration)
-		if err != nil {
-			return
-			// return "", errors.New("invalid duration format")
-		}
-
-		<-time.After(5 * time.Second)
+		<-time.After(3 * time.Second)
 
 		for {
-			modifle, err := os.OpenFile("./go.mod", os.O_RDONLY, 0755)
+			output, err := glm.GetImportablePackages()
 			if err != nil {
-				log.Fatalf("failed to open original modifle: %s\n", err.Error())
-				return
-			}
-			defer modifle.Close()
-
-			copiedModfilePath := fmt.Sprintf("%s/%s", filepath.Dir(glmfile), "go.mod")
-			copiedModfile, err := os.OpenFile(copiedModfilePath, os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0755)
-			if err != nil {
-				// TODO:
-				log.Fatalf("failed to open copied modifle: %s\n", err.Error())
-				// panic(err)
-				return
-			}
-			defer copiedModfile.Close()
-
-			_, err = io.Copy(copiedModfile, modifle)
-			if err != nil {
-				log.Fatalf("failed to copy: %s\n", err.Error())
-				// panic(err)
-				return
+				log.Fatalf("failed to execute glm: %s\n", err.Error())
 			}
 
-			if err := os.Setenv("MODFILE", copiedModfilePath); err != nil {
-				return
-			}
-
-			output, _ := glm.GetImportablePackages()
-
-			file, err := os.OpenFile(glmfile, os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0755)
+			file, err := os.OpenFile(glmfile, os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0o755)
 			if err != nil {
 				return
-				// return "", err
 			}
 			defer file.Close()
 

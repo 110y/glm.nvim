@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"time"
@@ -19,8 +20,17 @@ func main() {
 }
 
 func runGLMWorker(args []string) (string, error) {
+	origModFile, err := os.Open("./go.mod")
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return "", nil
+		}
+
+		return "", fmt.Errorf("failed to open go.mod: %w", err)
+	}
+
 	l := len(args)
-	if l != 2 {
+	if l < 3 {
 		return "", errors.New("invalid number of arguments")
 	}
 
@@ -30,6 +40,16 @@ func runGLMWorker(args []string) (string, error) {
 	d, err := time.ParseDuration(duration)
 	if err != nil {
 		return "", errors.New("invalid duration format")
+	}
+
+	tmpModFile := args[2]
+	newModFile, err := os.Create(tmpModFile)
+	if err != nil {
+		return "", fmt.Errorf("failed to copy go.mod: %w", err)
+	}
+
+	if _, err := io.Copy(newModFile, origModFile); err != nil {
+		return "", fmt.Errorf("failed to copy mod file: %w", err)
 	}
 
 	go func() {

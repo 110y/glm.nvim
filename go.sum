@@ -1,5 +1,5 @@
-github.com/110y/glm v0.0.0-20230415151615-25cd7227482c h1:KXqNHgAmUgviXzEVeMHqt21zq1CP7PuI+YdaA3JO6oQ=
-github.com/110y/glm v0.0.0-20230415151615-25cd7227482c/go.mod h1:EUP/FqEIftsBcBsZ8yOd+uY7Nbp6fW2/EEhMzgOQk6Y=
+github.com/110y/glm v0.0.0-20250420074440-dd5564dec52d h1:LdZCyKaeyfUi6y8bPvYBBDX33IPMHXtYOYoPYkMXrCY=
+github.com/110y/glm v0.0.0-20250420074440-dd5564dec52d/go.mod h1:EUP/FqEIftsBcBsZ8yOd+uY7Nbp6fW2/EEhMzgOQk6Y=
 github.com/neovim/go-client v1.1.8-0.20210322235919-ee5cbe92ed6b h1:3OLaDRMxFeVh5ZhdYnep6JWbzfB7PgIFcn+5fo+b6Y8=
 github.com/neovim/go-client v1.1.8-0.20210322235919-ee5cbe92ed6b/go.mod h1:lec+fTkbKMMQEcbP9SdiCteZeAhdchUsw6I1MGcqBkc=
 golang.org/x/sync v0.0.0-20220907140024-f12130a52804 h1:0SH2R3f1b1VmIMG7BXbEZCBUu2dKmHschSmjqGUrW8A=
